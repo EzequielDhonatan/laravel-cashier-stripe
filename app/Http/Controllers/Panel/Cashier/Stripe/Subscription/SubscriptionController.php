@@ -14,7 +14,9 @@ class SubscriptionController extends Controller
      */
     public function checkout()
     {
-        return view( 'panel.cashier.stripe.subscription.checkout' );
+        return view( 'panel.cashier.stripe.subscription.checkout', [
+            'intent' => auth()->user()->createSetupIntent()
+        ]);
     }
 
     /**

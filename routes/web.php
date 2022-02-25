@@ -20,6 +20,7 @@ Route::group(
 
     /* CASHIER (STRIPE)
     ================================================== */
+    Route::post( 'cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.store' );
     Route::get( 'cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.checkout' );
     Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' );
 
