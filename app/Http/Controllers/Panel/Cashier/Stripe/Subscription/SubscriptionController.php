@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Panel\Stripe\Subscription;
+namespace App\Http\Controllers\Panel\Cashier\Stripe\Subscription;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class SubscriptionController extends Controller
      */
     public function checkout()
     {
-        return view( 'panel.stripe.subscription.checkout' );
+        return view( 'panel.cashier.stripe.subscription.checkout' );
     }
 
     /**
@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
 
     public function premium()
     {
-        return view( 'panel.stripe.subscription.premium' );
+        return view( 'panel.cashier.stripe.subscription.premium' );
     }
 
 } // SubscriptionController

@@ -6,7 +6,7 @@ use App\Http\Controllers\Panel\{
 
     /* PANEL
     ================================================== */
-    Stripe\Subscription\SubscriptionController,
+    Cashier\Stripe\Subscription\SubscriptionController,
 
 };
 
@@ -18,10 +18,10 @@ Route::group(
 
     function () {
 
-    /* SUBSCRIPTION
+    /* CASHIER (STRIPE)
     ================================================== */
-    Route::get( 'stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.checkout' );
-    Route::get( 'stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' );
+    Route::get( 'cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.checkout' );
+    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' );
 
 });
 
