@@ -39,7 +39,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link href="#">
+                            <x-dropdown-link href="{{ route( 'subscription.account' ) }}">
                                 {{ __('Minha assinatura') }}
                             </x-dropdown-link>
 

@@ -23,6 +23,8 @@ Route::group(
 
     /* Cashier [Stripe]
     ================================================== */
+    Route::get( 'cashier/stripe/subscription/account', [ SubscriptionController::class, 'account' ] )->name( 'subscription.account' ); ## Account
+    Route::get( 'cashier/stripe/subscription/invoice/{invoice}', [ SubscriptionController::class, 'invoiceDownload' ] )->name( 'subscription.invoice.download' ); ## Invoice
     Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->middleware( 'subscribed' )->name( 'subscription.premium' ); ## Subscrition [Premium]
 
 });

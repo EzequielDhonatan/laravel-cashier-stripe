@@ -87,4 +87,20 @@ class SubscriptionController extends Controller
         return view( 'panel.cashier.stripe.subscription.premium' );
     }
 
+    public function account()
+    {
+        $invoices = auth()->user()->invoices();
+
+        return view( 'panel.cashier.stripe.subscription.account', compact( 'invoices' ) );
+    }
+
+    public function invoiceDownload( $invoiceId )
+    {
+        return auth()->user()
+                            ->downloadInvoice( $invoiceId, [
+                                'vendor'    => 'Laravel Cashier - Stripe',
+                                'product'   => 'Assinatura VIP'
+                            ]);
+    }
+
 } // SubscriptionController
