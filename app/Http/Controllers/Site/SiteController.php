@@ -23,4 +23,15 @@ class SiteController extends Controller
         return view( 'site.home.index', compact( 'plans' ) );
     }
 
+    public function createSessionPlan( $urlPlan )
+    {
+        if( !$plan = $this->repository->where( 'url', $urlPlan )->first() ) {
+            return redirect()->route( 'site.home.index' );
+        };
+
+        session()->put( 'plan', $plan );
+
+        return redirect()->route( 'subscription.index' );
+    }
+
 } // SiteController

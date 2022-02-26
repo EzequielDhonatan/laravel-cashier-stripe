@@ -18,7 +18,8 @@ class SubscriptionController extends Controller
             redirect()->route( 'subscription.premium' );
 
         return view( 'panel.cashier.stripe.subscription.index', [
-            'intent' => auth()->user()->createSetupIntent()
+            'intent'    => auth()->user()->createSetupIntent(),
+            'plan'      => session( 'plan' )
         ]);
     }
 
@@ -30,8 +31,10 @@ class SubscriptionController extends Controller
      */
     public function store( Request $request )
     {
+        $plan = session( 'plan' );
+
         $request->user()
-                    ->newSubscription( 'default', 'price_1KXA2gK91f8nJsGoW36X8djf' )
+                    ->newSubscription( 'default', $plan->stripe_id )
                     ->create( $request->token );
 
         return redirect()->route( 'subscription.premium' );

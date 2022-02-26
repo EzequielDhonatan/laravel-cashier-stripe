@@ -16,6 +16,8 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
 
+                    <p>Assinando o: {{ $plan->name }}</p>
+
                     <form id="form" method="POST" action="{{ route( 'subscription.store' ) }}">
 
                         @csrf

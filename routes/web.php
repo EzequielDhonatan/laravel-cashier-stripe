@@ -27,7 +27,7 @@ Route::group(
 
     /* Cashier [Stripe]
     ================================================== */
-    Route::resource( 'panel/cashier/stripe/subscription', SubscriptionController::class )->middleware( 'auth' ); ## Subscrition
+    Route::resource( 'panel/cashier/stripe/subscription', SubscriptionController::class )->middleware( 'check.choice.plan' ); ## Subscrition
 
     /* Cashier [Stripe]
     ================================================== */
@@ -39,7 +39,8 @@ Route::group(
 
 });
 
-Route::get( '/', [ SiteController::class, 'index' ] )->name( 'site.home.index' ); ## Site
+Route::get( '/', [ SiteController::class, 'index' ] )->name( 'site.home.index' ); ## Site - Home
+Route::get( '/assinar/{url}', [ SiteController::class, 'createSessionPlan' ] )->name( 'choice.plan' ); ## Site - Plan
 
 Route::get('/dashboard', function () {
     return view('dashboard');
