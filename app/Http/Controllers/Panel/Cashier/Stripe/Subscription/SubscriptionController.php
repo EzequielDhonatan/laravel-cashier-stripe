@@ -12,9 +12,12 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkout()
+    public function index()
     {
-        return view( 'panel.cashier.stripe.subscription.checkout', [
+        if ( auth()->user()->subscribed( 'default' ) )
+            redirect()->route( 'subscription.premium' );
+
+        return view( 'panel.cashier.stripe.subscription.index', [
             'intent' => auth()->user()->createSetupIntent()
         ]);
     }
@@ -34,8 +37,56 @@ class SubscriptionController extends Controller
         return redirect()->route( 'subscription.premium' );
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show( $id )
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit( $id )
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update( Request $request, $id )
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy( $id )
+    {
+        //
+    }
+
     public function premium()
     {
+        if ( !auth()->user()->subscribed( 'default' ) )
+            redirect()->route( 'subscription.index' );
+
         return view( 'panel.cashier.stripe.subscription.premium' );
     }
 

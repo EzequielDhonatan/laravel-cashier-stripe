@@ -1,9 +1,11 @@
 <x-app-layout>
 
     <x-slot name="header">
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __( 'Checkout' ) }}
         </h2>
+
     </x-slot>
 
     <div class="py-12">
@@ -34,11 +36,13 @@
 
                     </form> <!-- form -->
 
-                </div>
-            </div>
-        </div>
+                </div>  <!-- p-6 bg-white border-b border-gray-200 -->
 
-    </div>
+            </div>  <!-- bg-white overflow-hidden shadow-sm sm:rounded-lg -->
+
+        </div>  <!-- max-w-7xl mx-auto sm:px-6 lg:px-8 -->
+
+    </div>  <!-- py-12 -->
 
 </x-app-layout>
 
@@ -70,14 +74,20 @@
         );
 
         if ( error ) {
-            alert( 'Error' )
+
+            alert( 'Ops... Algo errado!' )
             console.log( error )
-        } else {
-            alert( 'Deu certo!' )
-            console.log( setupIntent )
+
+            return;
         }
 
-        // form.submit()
+        let token = document.createElement( 'input' )
+        token.setAttribute( 'type', 'hidden' )
+        token.setAttribute( 'name', 'token' )
+        token.setAttribute('value', setupIntent.payment_method)
+        form.appendChild( token )
+
+        form.submit()
 
     })
 

@@ -18,11 +18,10 @@ Route::group(
 
     function () {
 
-    /* CASHIER (STRIPE)
+    /* Cashier [Stripe]
     ================================================== */
-    Route::post( 'cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.store' );
-    Route::get( 'cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.checkout' );
-    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' );
+    Route::resource( 'cashier/stripe/subscription', SubscriptionController::class ); ## Subscrition
+    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' ); ## Subscrition [Premium]
 
 });
 
