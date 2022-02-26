@@ -103,4 +103,18 @@ class SubscriptionController extends Controller
                             ]);
     }
 
+    public function cancel()
+    {
+        auth()->user()->subscription( 'default' )->cancel();
+
+        return redirect()->route( 'subscription.account' );
+    }
+
+    public function resume()
+    {
+        auth()->user()->subscription( 'default' )->cancel();
+
+        return redirect()->route( 'subscription.account' );
+    }
+
 } // SubscriptionController
