@@ -16,7 +16,7 @@ class EnsureUserIsSubscribed
      */
     public function handle(Request $request, Closure $next)
     {
-        if ( !$request->user()->subscribed( 'default' ) )
+        if ( $request->user() && !$request->user()->subscribed( 'default' ) )
             redirect()->route( 'subscription.index' );
 
         return $next( $request );
