@@ -112,7 +112,7 @@ class SubscriptionController extends Controller
 
     public function resume()
     {
-        auth()->user()->subscription( 'default' )->cancel();
+        auth()->user()->subscription( 'default' )->resume();
 
         return redirect()->route( 'subscription.account' );
     }

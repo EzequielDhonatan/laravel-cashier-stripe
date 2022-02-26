@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Site\{
+
+    /* SITE
+    ================================================== */
+    SiteController,
+
+};
+
 use App\Http\Controllers\Panel\{
 
     /* PANEL
@@ -31,9 +39,7 @@ Route::group(
 
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/', [ SiteController::class, 'index' ] )->name( 'site.home.index' ); ## Site
 
 Route::get('/dashboard', function () {
     return view('dashboard');
