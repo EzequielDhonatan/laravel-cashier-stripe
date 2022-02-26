@@ -84,9 +84,6 @@ class SubscriptionController extends Controller
 
     public function premium()
     {
-        if ( !auth()->user()->subscribed( 'default' ) )
-            redirect()->route( 'subscription.index' );
-
         return view( 'panel.cashier.stripe.subscription.premium' );
     }
 

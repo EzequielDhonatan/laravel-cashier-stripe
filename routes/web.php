@@ -21,6 +21,19 @@ Route::group(
     /* Cashier [Stripe]
     ================================================== */
     Route::resource( 'cashier/stripe/subscription', SubscriptionController::class ); ## Subscrition
+
+});
+
+Route::group(
+    [
+        'prefix'        => 'panel',
+        'middleware'    => 'subscribed'
+    ],
+
+    function () {
+
+    /* Cashier [Stripe]
+    ================================================== */
     Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' ); ## Subscrition [Premium]
 
 });
