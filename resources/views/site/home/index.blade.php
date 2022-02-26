@@ -30,13 +30,15 @@
 
             @include( 'site.home._partials.features' )
 
-            @include( 'site.home._partials.plans' )
+            @include( 'site.home._partials.plans', [
+                'plans' => $plans
+            ])
 
             @include( 'site.home._partials.contact' )
 
         </main>
 
-        @include('site.home._partials.footer')
+        @include( 'site.home._partials.footer' )
 
     </div>
 </body>
