@@ -12,29 +12,18 @@ use App\Http\Controllers\Panel\{
 
 Route::group(
     [
-        'prefix'        => 'panel',
-        'middleware'    => 'auth'
+        'prefix'        => 'panel'
     ],
 
     function () {
 
     /* Cashier [Stripe]
     ================================================== */
-    Route::resource( 'cashier/stripe/subscription', SubscriptionController::class ); ## Subscrition
-
-});
-
-Route::group(
-    [
-        'prefix'        => 'panel',
-        'middleware'    => 'subscribed'
-    ],
-
-    function () {
+    Route::resource( 'panel/cashier/stripe/subscription', SubscriptionController::class )->middleware( 'auth' ); ## Subscrition
 
     /* Cashier [Stripe]
     ================================================== */
-    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' ); ## Subscrition [Premium]
+    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->middleware( 'subscribed' )->name( 'subscription.premium' ); ## Subscrition [Premium]
 
 });
 
