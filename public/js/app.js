@@ -24806,7 +24806,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      formData: {
+        preloader: false,
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      },
+      // formData
+      messageSuccess: '',
+      messageFail: ''
+    }; // return
+  },
+  // data
+  methods: {
+    sendContact: function sendContact() {
+      var _this = this;
+
+      this.messageSuccess = '';
+      this.messageFail = '';
+      this.preloader = true;
+      axios.post('/api/v1/contact', this.formData).then(function (response) {
+        return _this.messageSuccess = 'Contato enviado com sucesso!';
+      })["catch"](function (error) {
+        return _this.messageFail = 'Ops... algo errado!';
+      })["finally"](function () {
+        _this.preloader = false;
+
+        _this.reset();
+      });
+    },
+    // sendContact
+    reset: function reset() {
+      this.formData = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      }; // formData
+    } // reset
+
+  } // methods
+
 }); // export default
 
 /***/ }),
@@ -24824,11 +24868,163 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "form__row"
+};
+var _hoisted_2 = {
+  "class": "form__input-group"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div><form class=\"form mt-10\" action=\"\"><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"name\" class=\"\">Nome <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"name\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\"></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"email\" class=\"\">Email <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"email\" name=\"email\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"subject\" class=\"subject\">Assunto <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"subject\" name=\"subject\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"message\" class=\"bg-white text-gray-600 px-1\">Mensagem <abbr title=\"Obrigatório\">*</abbr></label></p></div><textarea id=\"message\" name=\"message\" class=\"form__input\" rows=\"4\" required></textarea></div></div><div class=\"mt-6 pt-3 text-center\"><button type=\"submit\" class=\"button button--filled button--primary\">Enviar</button></div></form></div> w ", 2);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__label-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "name",
+  "class": ""
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Nome "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
+  title: "Obrigatório"
+}, "*")])])], -1
+/* HOISTED */
+);
 
+var _hoisted_4 = {
+  "class": "form__row"
+};
+var _hoisted_5 = {
+  "class": "form__input-group"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__label-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "email",
+  "class": ""
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Email "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
+  title: "Obrigatório"
+}, "*")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "form__row"
+};
+var _hoisted_8 = {
+  "class": "form__input-group"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__label-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "subject",
+  "class": "subject"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Assunto "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
+  title: "Obrigatório"
+}, "*")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "form__row"
+};
+var _hoisted_11 = {
+  "class": "form__input-group"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form__label-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "message",
+  "class": "bg-white text-gray-600 px-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Mensagem "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
+  title: "Obrigatório"
+}, "*")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "mt-6 pt-3 text-center"
+};
+var _hoisted_14 = ["disabled"];
+var _hoisted_15 = {
+  key: 0
+};
+var _hoisted_16 = {
+  key: 1
+};
+var _hoisted_17 = {
+  key: 0
+};
+var _hoisted_18 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _hoisted_1;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    "class": "form mt-10",
+    action: "#",
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.sendContact && $options.sendContact.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.formData.name = $event;
+    }),
+    id: "name",
+    autocomplete: "false",
+    tabindex: "0",
+    "class": "form__input"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formData.name]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.formData.email = $event;
+    }),
+    id: "email",
+    name: "email",
+    autocomplete: "false",
+    tabindex: "0",
+    "class": "form__input",
+    required: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formData.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.formData.subject = $event;
+    }),
+    id: "subject",
+    name: "subject",
+    autocomplete: "false",
+    tabindex: "0",
+    "class": "form__input",
+    required: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formData.subject]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.formData.message = $event;
+    }),
+    id: "message",
+    name: "message",
+    "class": "form__input",
+    rows: "4",
+    required: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formData.message]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["button button--filled button--primary", {
+      'cursor-not-allowed': _ctx.preloader
+    }]),
+    type: "submit",
+    disabled: _ctx.preloader
+  }, [_ctx.preloader ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, "Enviando...")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, "Enviar"))], 10
+  /* CLASS, PROPS */
+  , _hoisted_14)]), $data.messageSuccess ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.messageSuccess), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.messageFail ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.messageFail), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 32
+  /* HYDRATE_EVENTS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" form mt-10 ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ")], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  );
 }
 
 /***/ }),
