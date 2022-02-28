@@ -12,7 +12,7 @@
 
                 @foreach ( $plans as $plan )
 
-                <div class="flex-1 flex-1 md:w-2/3 md:mx-auto lg:w-auto">
+                <div class="flex-1 md:w-2/3 md:mx-auto lg:w-auto">
                     <div class="card card--col" id="Pro">
                         <div class="card__header">
                             <div class="flex items-center justify-between">
