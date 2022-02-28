@@ -6,22 +6,24 @@
                 Escolha o plano que melhor se encaixa as suas necessidades
             </p>
         </div>
-        <div class="pricingTable mt-10" x-data="pricingTable()">
+        <div class="pricingTable mt-10">
             <div class="flex flex-col lg:flex-row my-5 lg:space-x-4 space-y-8">
-                <template :key="index"></template>
+                <template></template>
 
                 @foreach ( $plans as $plan )
 
                 <div class="flex-1 flex-1 md:w-2/3 md:mx-auto lg:w-auto">
-                    <div class="card card--col" :id="item.ref" id="Pro">
+                    <div class="card card--col" id="Pro">
                         <div class="card__header">
                             <div class="flex items-center justify-between">
-                                <h3 class="card__title" x-text="item.title">{{ $plan->name }}</h3><template
-                                    x-if="item.badge"><span class="badge" x-text="item.badge"></span></template>
+                                <h3 class="card__title">{{ $plan->name }}</h3>
+                                <template>
+                                    <span class="badge"></span>
+                                </template>
 
                                 @if ( $plan->recomended )
 
-                                    <span class="badge" x-text="item.badge">
+                                    <span class="badge">
                                         Recomendado
                                     </span>
 
@@ -36,7 +38,7 @@
                                         R${{ $plan->price_br }}
                                     </span>
                                     <span class="price-period"><span class="px-1">/</span>
-                                    <span x-text="translate()">Mês</span>
+                                    <span>Mês</span>
                                 </span>
 
                             </div>
