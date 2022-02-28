@@ -40,7 +40,10 @@
 
         @include( 'site._partials.footer' )
 
-    </div>
+    </div> <!-- #app -->
+
+    <script src="{{ asset( 'js/app.js' ) }}"></script>
+
 </body>
 
 </html>
