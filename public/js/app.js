@@ -24818,6 +24818,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/index.js")["default"]);
+Vue.component('contact-component', Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Contact'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 var app = new Vue({
   el: '#app'
 });
