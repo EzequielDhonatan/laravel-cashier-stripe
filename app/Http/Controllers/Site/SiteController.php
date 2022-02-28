@@ -16,22 +16,22 @@ class SiteController extends Controller
         $this->repository = $model;
     }
 
-    public function index()
+    public function home()
     {
         $plans = $this->repository->with( 'features' )->get();
 
-        return view( 'site.home.index', compact( 'plans' ) );
+        return view( 'site.home', compact( 'plans' ) );
     }
 
     public function createSessionPlan( $urlPlan )
     {
         if( !$plan = $this->repository->where( 'url', $urlPlan )->first() ) {
-            return redirect()->route( 'site.home.index' );
+            return redirect()->route( 'site.home' );
         };
 
         session()->put( 'plan', $plan );
 
-        return redirect()->route( 'subscription.index' );
+        return redirect()->route( 'subscription.checkout' );
     }
 
 } // SiteController

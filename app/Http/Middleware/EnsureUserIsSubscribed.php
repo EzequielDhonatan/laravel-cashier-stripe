@@ -14,10 +14,10 @@ class EnsureUserIsSubscribed
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle( Request $request, Closure $next )
     {
         if ( $request->user() && !$request->user()->subscribed( 'default' ) )
-            redirect()->route( 'subscription.index' );
+            redirect()->route( 'subscription.checkout' );
 
         return $next( $request );
     }

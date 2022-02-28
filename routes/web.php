@@ -20,27 +20,29 @@ use App\Http\Controllers\Panel\{
 
 Route::group(
     [
-        'prefix'        => 'panel'
+        'prefix'        => 'panel',
+        'middleware'    => 'auth'
     ],
 
     function () {
 
-    /* Cashier [Stripe]
+    /* Cashier | Stripe
     ================================================== */
-    Route::resource( 'panel/cashier/stripe/subscription', SubscriptionController::class )->middleware( 'check.choice.plan' ); ## Subscrition
+    Route::get( 'panel/cashier/stripe/subscription/checkout', [ SubscriptionController::class, 'checkout' ] )->name( 'subscription.checkout' )->middleware( [ 'check.choice.plan' ] ); ## Subscrition - checkout
+    Route::post( 'panel/cashier/stripe/subscription/store', [ SubscriptionController::class, 'store' ] )->name( 'subscription.store' )->middleware( [ 'check.choice.plan' ] ); ## Subscrition - store
 
-    /* Cashier [Stripe]
-    ================================================== */
-    Route::get( 'cashier/stripe/subscription/account', [ SubscriptionController::class, 'account' ] )->name( 'subscription.account' ); ## Account
-    Route::get( 'cashier/stripe/subscription/invoice/{invoice}', [ SubscriptionController::class, 'invoiceDownload' ] )->name( 'subscription.invoice.download' ); ## Invoice
-    Route::get( 'cashier/stripe/subscription/cancel', [ SubscriptionController::class, 'cancel' ] )->name( 'subscription.cancel' ); ## Cancel
-    Route::get( 'cashier/stripe/subscription/resume', [ SubscriptionController::class, 'resume' ] )->name( 'subscription.resume' ); ## Resume
-    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->middleware( 'subscribed' )->name( 'subscription.premium' ); ## Subscrition [Premium]
+    Route::get( 'cashier/stripe/subscription/premium', [ SubscriptionController::class, 'premium' ] )->name( 'subscription.premium' )->middleware( ['subscribed' ] ); ## Subscrition - Premium
+
+    Route::get( 'cashier/stripe/subscription/invoices', [ SubscriptionController::class, 'invoices' ] )->name( 'subscription.invoice' ); ## Subscrition - Invoice
+    Route::get( 'cashier/stripe/subscription/invoice/{invoice}', [ SubscriptionController::class, 'invoiceDownload' ] )->name( 'subscription.invoice.download' ); ## Subscrition - Invoice Download
+
+    Route::get( 'cashier/stripe/subscription/cancel', [ SubscriptionController::class, 'cancel' ] )->name( 'subscription.cancel' ); ## Subscrition - Cancel
+    Route::get( 'cashier/stripe/subscription/resume', [ SubscriptionController::class, 'resume' ] )->name( 'subscription.resume' ); ## Subscrition - Resume
 
 });
 
-Route::get( '/', [ SiteController::class, 'index' ] )->name( 'site.home.index' ); ## Site - Home
-Route::get( '/assinar/{url}', [ SiteController::class, 'createSessionPlan' ] )->name( 'choice.plan' ); ## Site - Plan
+Route::get( '/', [ SiteController::class, 'home' ] )->name( 'site.home' ); ## Site - Home
+Route::get( '/assinar/{url}', [ SiteController::class, 'createSessionPlan' ] )->name( 'choice.plan' ); ## Choice - Plan
 
 Route::get('/dashboard', function () {
     return view('dashboard');

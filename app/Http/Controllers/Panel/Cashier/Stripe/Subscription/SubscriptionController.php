@@ -7,17 +7,12 @@ use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function checkout()
     {
         if ( auth()->user()->subscribed( 'default' ) )
             redirect()->route( 'subscription.premium' );
 
-        return view( 'panel.cashier.stripe.subscription.index', [
+        return view( 'panel.cashier.stripe.subscription.checkout', [
             'intent'    => auth()->user()->createSetupIntent(),
             'plan'      => session( 'plan' )
         ]);
@@ -40,61 +35,16 @@ class SubscriptionController extends Controller
         return redirect()->route( 'subscription.premium' );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show( $id )
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit( $id )
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update( Request $request, $id )
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy( $id )
-    {
-        //
-    }
-
     public function premium()
     {
         return view( 'panel.cashier.stripe.subscription.premium' );
     }
 
-    public function account()
+    public function invoices()
     {
         $invoices = auth()->user()->invoices();
 
-        return view( 'panel.cashier.stripe.subscription.account', compact( 'invoices' ) );
+        return view( 'panel.cashier.stripe.subscription.invoice', compact( 'invoices' ) );
     }
 
     public function invoiceDownload( $invoiceId )
@@ -110,14 +60,14 @@ class SubscriptionController extends Controller
     {
         auth()->user()->subscription( 'default' )->cancel();
 
-        return redirect()->route( 'subscription.account' );
+        return redirect()->route( 'subscription.invoice' );
     }
 
     public function resume()
     {
         auth()->user()->subscription( 'default' )->resume();
 
-        return redirect()->route( 'subscription.account' );
+        return redirect()->route( 'subscription.invoice' );
     }
 
 } // SubscriptionController
