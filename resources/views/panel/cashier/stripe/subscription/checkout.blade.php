@@ -16,6 +16,8 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
 
+                    <div id="show-errors" style="display: none" class="mt-2 text-sm text-red-600"></div>
+
                     <p>Assinando o: {{ $plan->name }}</p>
 
                     <form id="form" method="POST" action="{{ route( 'subscription.store' ) }}">
@@ -61,8 +63,19 @@
     const cardButton = document.getElementById( 'card-button' )
     const clientSecret = cardButton.dataset.secret
 
+    const showErrors = document.getElementById( 'show-errors' )
+
     form.addEventListener( 'submit', async ( e ) => {
+
         e.preventDefault()
+
+        // Disable button
+        cardButton.classList.add( 'cursor-not-allowed' )
+        cardButton.firstChild.data = 'Validando'
+
+        // Reset errors
+        showErrors.innerText = ''
+        showErrors.style.display = 'none'
 
         const { setupIntent, error } = await stripe.confirmCardSetup(
             clientSecret, {
@@ -77,8 +90,13 @@
 
         if ( error ) {
 
-            alert( 'Ops... Algo errado!' )
             console.log( error )
+
+            showErrors.style.display = 'block'
+            showErrors.innerText = ( error.type == 'validation_error' ) ? error.message : 'Dados inválidos, verifique e tentne novamente!'
+
+            // Remove button
+            cardButton.classList.remove( 'cursor-not-allowed' )
 
             return;
         }
@@ -91,6 +109,27 @@
 
         form.submit()
 
-    })
+    }) //
 
 </script>
+
+<style>
+    .StripeElement {
+        background-color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+    }
+    .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+    .StripeElement--invalid {
+        border-color: #fa755a;
+    }
+    .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+    }
+</style>
