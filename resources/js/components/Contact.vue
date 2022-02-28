@@ -1,5 +1,7 @@
 <template>
 
+    <div>
+
     <form class="form mt-10" action="">
         <div class="form__row">
             <div class="form__input-group">
@@ -39,6 +41,8 @@
         <div class="mt-6 pt-3 text-center"><button type="submit"
                 class="button button--filled button--primary">Enviar</button></div>
     </form>
+
+    </div>
 
 </template> <!-- -->
 

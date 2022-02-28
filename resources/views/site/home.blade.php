@@ -1,49 +1,54 @@
-<html lang="pt-BR">
-<head>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <meta charset="UTF-8" />
-    <title>Home - {{ config( 'app.name' ) }}</title>
+    <head>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" />
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset( 'images/favicon/favicon-96x96.png' ) }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( 'images/favicon/favicon-16x16.png' ) }}" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="{{ asset( 'images/favicon.ico' ) }}">
+        <title>Home - {{ config( 'app.name' ) }}</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset( 'css/site.css' ) }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset( 'images/favicon/favicon-32x32.png' ) }}" />
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset( 'images/favicon/favicon-96x96.png' ) }}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( 'images/favicon/favicon-16x16.png' ) }}" />
 
-</head>
+        <link rel="icon" href="{{ asset( 'images/favicon.ico' ) }}">
 
-<body>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap" />
+        <link rel="stylesheet" href="{{ asset( 'css/site.css' ) }}">
 
-    <div id="app">
+    </head>
 
-        @include( 'site._partials.header' )
+    <body>
 
-        <main class="main main--footerFixed bg-gray-100">
+        <div id="app">
 
-            @include( 'site._partials.features-header' )
+            @include( 'site._partials.header' )
 
-            @include( 'site._partials.what-is' )
+            <main class="main main--footerFixed bg-gray-100">
 
-            @include( 'site._partials.features' )
+                @include( 'site._partials.features-header' )
 
-            @include( 'site._partials.plans', [
-                'plans' => $plans
-            ])
+                @include( 'site._partials.what-is' )
 
-            @include( 'site._partials.contact' )
+                @include( 'site._partials.features' )
 
-        </main>
+                @include( 'site._partials.plans', [
+                    'plans' => $plans
+                ])
 
-        @include( 'site._partials.footer' )
+                @include( 'site._partials.contact' )
 
-    </div> <!-- #app -->
+            </main>
 
-    <script src="{{ asset( 'js/app.js' ) }}"></script>
+            @include( 'site._partials.footer' )
 
-</body>
+        </div> <!-- #app -->
+
+        <script src="{{ asset( 'js/app.js' ) }}"></script>
+
+    </body>
 
 </html>

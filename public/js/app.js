@@ -24824,16 +24824,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "form mt-10",
-  action: ""
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"name\" class=\"\">Nome <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"name\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\"></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"email\" class=\"\">Email <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"email\" name=\"email\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"subject\" class=\"subject\">Assunto <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"subject\" name=\"subject\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"message\" class=\"bg-white text-gray-600 px-1\">Mensagem <abbr title=\"Obrigatório\">*</abbr></label></p></div><textarea id=\"message\" name=\"message\" class=\"form__input\" rows=\"4\" required></textarea></div></div><div class=\"mt-6 pt-3 text-center\"><button type=\"submit\" class=\"button button--filled button--primary\">Enviar</button></div>", 5);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<form class=\"form mt-10\" action=\"\"><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"name\" class=\"\">Nome <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"name\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\"></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"email\" class=\"\">Email <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"email\" name=\"email\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"subject\" class=\"subject\">Assunto <abbr title=\"Obrigatório\">*</abbr></label></p></div><input id=\"subject\" name=\"subject\" autocomplete=\"false\" tabindex=\"0\" class=\"form__input\" required></div></div><div class=\"form__row\"><div class=\"form__input-group\"><div class=\"form__label-group\"><p><label for=\"message\" class=\"bg-white text-gray-600 px-1\">Mensagem <abbr title=\"Obrigatório\">*</abbr></label></p></div><textarea id=\"message\" name=\"message\" class=\"form__input\" rows=\"4\" required></textarea></div></div><div class=\"mt-6 pt-3 text-center\"><button type=\"submit\" class=\"button button--filled button--primary\">Enviar</button></div></form>", 1);
 
-var _hoisted_7 = [_hoisted_2];
+var _hoisted_2 = [_hoisted_1];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", _hoisted_1, _hoisted_7);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, _hoisted_2);
 }
 
 /***/ }),
@@ -24853,7 +24849,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js")["default"]);
-Vue.component('contact-component', (__webpack_require__(/*! ./components/Contact.vue */ "./resources/js/components/Contact.vue")["default"]));
+Vue.component('contact-component', (__webpack_require__(/*! ./components/Contact */ "./resources/js/components/Contact.vue")["default"]));
 var app = new Vue({
   el: '#app'
 });

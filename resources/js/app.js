@@ -8,7 +8,7 @@ Alpine.start();
 
 window.Vue = require('vue').default
 
-Vue.component('contact-component', require('./components/Contact.vue').default)
+Vue.component('contact-component', require('./components/Contact').default)
 
 const app = new Vue({
     el: '#app'
