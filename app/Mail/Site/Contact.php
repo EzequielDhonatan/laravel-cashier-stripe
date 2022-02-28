@@ -30,7 +30,9 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->markdown( 'emails.site.contact' );
+        return $this->markdown( 'emails.site.contact' )
+                    ->subject( $this->data[ 'subject' ] )
+                    ->to( config( 'mail.from.address' ) );
     }
 
 } // Contact

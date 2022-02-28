@@ -1,13 +1,15 @@
-@component( 'mail::message' )
-# Novo contato
+@component('mail::message')
 
-Nome: {{ $data[ 'name' ] }}
-E-mail: {{ $data[ 'email' ] }}
-Assunto: {{ $data[ 'subject' ] }}
-Mensagem: {{ $data[ 'message' ] }}
+# Novo Contato
+
+Nome: {{ $data['name'] }}
+
+E-mail: {{ $data['email'] }}
+
+Mensagem: {{ $data['message'] }}
 
 Obrigado,<br>
 
-{{ config( 'app.name' -  }}
+{{ config( 'app.name' ) }}!
 
 @endcomponent
