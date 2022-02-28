@@ -42,9 +42,15 @@ class SubscriptionController extends Controller
 
     public function invoices()
     {
-        $invoices = auth()->user()->invoices();
+        $user = auth()->user();
 
-        return view( 'panel.cashier.stripe.subscription.invoice', compact( 'invoices' ) );
+        $invoices = $user->invoices();
+
+        $subscription = $user->subscription( 'default' );
+
+        return view( 'panel.cashier.stripe.subscription.invoice', compact(
+            'user', 'invoices', 'subscription'
+        ));
     }
 
     public function invoiceDownload( $invoiceId )

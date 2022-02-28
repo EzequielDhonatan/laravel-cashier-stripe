@@ -16,25 +16,44 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    @if ( Auth::user()->subscription( 'default' ) )
+                    @if ( $subscription )
 
-                        @if ( Auth::user()->subscription( 'default' )->onGracePeriod() )
+                        <p>
+                            <strong>Plano: </strong>
+                            {{ $user->plan()->name }}
+                        </p>
 
-                            <a href="{{ route( 'subscription.resume' ) }}" class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none">
-                                Reativar assinatura
+                        <br>
+
+                        @if ( $subscription->cancelled() && $subscription->onGracePeriod() )
+
+                            <a href="{{ route('subscription.resume') }}"
+                                class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none">
+                                Reativar Assinatura
                             </a>
 
-                        @else
+                            <br> <br>
 
-                            <a href="{{ route( 'subscription.cancel' ) }}" class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none">
-                                Cancelar assinatura
+                            Seu acesso vai até o dia: {{ $user->access_end }}
+
+                        @elseif ( !$subscription->cancelled() )
+
+                            <a href="{{ route('subscription.cancel') }}"
+                                class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none">
+                                Cancelar Assinatura
                             </a>
+
+                        @endif
+
+                        @if ( $subscription->ended() )
+
+                            Assinatura e acesso cancelado!
 
                         @endif
 
                     @else
 
-                        [ Não é assinante ]
+                        [Não é assintante!]
 
                     @endif
 
